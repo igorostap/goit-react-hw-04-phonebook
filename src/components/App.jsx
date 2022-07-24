@@ -12,7 +12,8 @@ const initialContacts = [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' }
 ];
 export function App() {
-  const [contacts, setContacts] = useState(initialContacts);
+  const [contacts, setContacts] = useState(() => 
+    JSON.parse(window.localStorage.getItem('contacts')) ?? (initialContacts));
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
